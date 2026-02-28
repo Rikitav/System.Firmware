@@ -18,49 +18,48 @@ using Rikitav.IO.ExtensibleFirmware.SystemPartition;
 using System;
 using System.IO;
 
-namespace Rikitav.IO.ExtensibleFirmware
+namespace Rikitav.IO.ExtensibleFirmware;
+
+/// <summary>
+/// 
+/// </summary>
+public static class FirmwareInterface
 {
     /// <summary>
-    /// 
+    /// Checks whether the UEFI platform is available on this system
     /// </summary>
-    public static class FirmwareInterface
+    /// <returns>If available, return <see langword="true"/>, else <see langword="false"/></returns>
+    public static bool Available
     {
-        /// <summary>
-        /// Checks whether the UEFI platform is available on this system
-        /// </summary>
-        /// <returns>If available, return <see langword="true"/>, else <see langword="false"/></returns>
-        public static bool Available
-        {
-            get => FirmwareUtilities.CheckFirmwareAvailablity();
-        }
+        get => FirmwareUtilities.CheckFirmwareAvailablity();
+    }
 
-        /// <summary>
-        /// Searches among the partition for the one that is marked as EfiSystemPartition
-        /// </summary>
-        /// <returns><see cref="DirectoryInfo"/> of EfiSystemPartition</returns>
-        public static DirectoryInfo SystemPartition
-        {
-            get
-            {
-                if (!Available)
-                    throw new PlatformNotSupportedException("This system does not support UEFI, or is loaded in LEGACY mode");
-
-                return EfiPartition.GetDirectoryInfo();
-            }
-        }
-
-        /// <summary>
-        /// Boot into the UEFI user interface after rebooting the computer. Does NOT reboot the computer, but sets the boot condition
-        /// </summary>
-        public static void BootToUserInterface()
+    /// <summary>
+    /// Searches among the partition for the one that is marked as EfiSystemPartition
+    /// </summary>
+    /// <returns><see cref="DirectoryInfo"/> of EfiSystemPartition</returns>
+    public static DirectoryInfo SystemPartition
+    {
+        get
         {
             if (!Available)
                 throw new PlatformNotSupportedException("This system does not support UEFI, or is loaded in LEGACY mode");
 
-            if (!FirmwareGlobalEnvironment.OsIndicationsSupported.HasFlag(EfiOsIindications.BOOT_TO_FW_UI))
-                throw new PlatformNotSupportedException("Current UEFI platform does not support force reboot in Firmware UI");
-
-            FirmwareGlobalEnvironment.OsIndications |= EfiOsIindications.BOOT_TO_FW_UI;
+            return EfiPartition.VolumeDirectory;
         }
+    }
+
+    /// <summary>
+    /// Boot into the UEFI user interface after rebooting the computer. Does NOT reboot the computer, but sets the boot condition
+    /// </summary>
+    public static void BootToUserInterface()
+    {
+        if (!Available)
+            throw new PlatformNotSupportedException("This system does not support UEFI, or is loaded in LEGACY mode");
+
+        if (!FirmwareGlobalEnvironment.OsIndicationsSupported.HasFlag(EfiOsIindications.BOOT_TO_FW_UI))
+            throw new PlatformNotSupportedException("Current UEFI platform does not support force reboot in Firmware UI");
+
+        FirmwareGlobalEnvironment.OsIndications |= EfiOsIindications.BOOT_TO_FW_UI;
     }
 }

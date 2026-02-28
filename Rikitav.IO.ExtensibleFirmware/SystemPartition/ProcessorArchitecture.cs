@@ -1,4 +1,4 @@
-﻿// Rikitav.IO.ExtensibleFirmware
+// Rikitav.IO.ExtensibleFirmware
 // Copyright (C) 2024 Rikitav
 // 
 // This program is free software: you can redistribute it and/or modify
@@ -14,53 +14,55 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-using System;
-
-namespace Rikitav.IO.ExtensibleFirmware;
+namespace Rikitav.IO.ExtensibleFirmware.SystemPartition;
 
 /// <summary>
-/// Attributes bitmask to set for the variable
+/// Enumeration of supported processor architectures for firmware applications
 /// </summary>
-[Flags]
-public enum VariableAttributes : int
+public enum FirmwareApplicationArchitecture : ushort
 {
     /// <summary>
-    /// The variable is accessible from a non volatile environment
+    /// Unknown architecture
     /// </summary>
-    NON_VOLATILE = 0x00000001,
+    Unknown = 0,
 
     /// <summary>
-    /// The variable is available while the Boot service is running
+    /// 32-bit
     /// </summary>
-    BOOTSERVICE_ACCESS = 0x00000002,
+    Ia32 = 0x14c,
+    
+    /// <summary>
+    /// AMD64
+    /// </summary>
+    x64 = 0x8664,
 
     /// <summary>
-    /// The variable is available at runtime
+    /// Intel Itanium 64
     /// </summary>
-    RUNTIME_ACCESS = 0x00000004,
+    Ia64 = 0x200,
 
     /// <summary>
-    /// NoDescription
+    /// AArch32 architecture
     /// </summary>
-    HARDWARE_ERROR_RECORD = 0x00000008,
+    Arm = 0x1c2,
 
     /// <summary>
-    /// The variable is available only to authorized sources
+    /// AArch64 architecture
     /// </summary>
-    AUTHENTICATED_WRITE_ACCESS = 0x00000010,
+    AArch64 = 0xaa64,
 
     /// <summary>
-    /// NoDescription
+    /// RISC-V 32-bit architecture
     /// </summary>
-    TIME_BASED_AUTHENTICATED_WRITE_ACCESS = 0x00000020,
+    RISC_V32 = 0x5032,
 
     /// <summary>
-    /// NoDescription
+    /// RISC-V 64-bit architecture
     /// </summary>
-    APPEND_WRITE = 0x00000040,
+    RISC_V64 = 0x5064,
 
     /// <summary>
-    /// NoDescription
+    /// RISC-V 128-bit architecture
     /// </summary>
-    ENHANCED_AUTHENTICATED_ACCESS = 0x00000080
+    RISC_V128 = 0x5128
 }

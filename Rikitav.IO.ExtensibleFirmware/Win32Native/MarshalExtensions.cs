@@ -1,4 +1,4 @@
-// Rikitav.IO.ExtensibleFirmware
+﻿// Rikitav.IO.ExtensibleFirmware
 // Copyright (C) 2024 Rikitav
 // 
 // This program is free software: you can redistribute it and/or modify
@@ -14,13 +14,15 @@
 // You should have received a copy of the GNU General Public License
 // along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-#pragma warning disable CS1591
-namespace Rikitav.IO.ExtensibleFirmware.Win32Native
+using System;
+
+namespace Rikitav.IO.ExtensibleFirmware.Win32Native;
+
+public static partial class MarshalExtensions
 {
-    public enum PartitionStyle : uint
+    public static unsafe T[] PinnedMemoryToArray<T>(this IntPtr memory, int length) where T : struct
     {
-        MasterBootRecord,
-        GuidPartitionTable,
-        Raw
+        ReadOnlySpan<T> span = new ReadOnlySpan<T>(memory.ToPointer(), length);
+        return span.ToArray();
     }
 }
