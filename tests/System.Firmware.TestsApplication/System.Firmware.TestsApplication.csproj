@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\System.Firmware\System.Firmware.csproj" />
+    <ProjectReference Include="..\..\src\System.Firmware.BootService\System.Firmware.BootService.csproj" />
+    <ProjectReference Include="..\..\src\System.Firmware.MediaDevicePathProtocols\System.Firmware.DevicePathProtocols.Media.csproj" />
+	<ProjectReference Include="..\..\src\System.Firmware.MediaDevicePathProtocols\System.Firmware.DevicePathProtocols.Hardware.csproj" />
+  </ItemGroup>
+
+</Project>

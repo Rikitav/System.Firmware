@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="src/System.Firmware/System.Firmware.csproj" />
+  <Project Path="src/System.Firmware.BootService/System.Firmware.BootService.csproj" />
+  <Project Path="src/System.Firmware.DevicePathProtocols.Hardware/System.Firmware.DevicePathProtocols.Hardware.csproj" />
+  <Project Path="src/System.Firmware.DevicePathProtocols.Media/System.Firmware.DevicePathProtocols.Media.csproj" />
+  <Project Path="dev/System.Firmware.Generators/System.Firmware.Generators.csproj" />
+  <Project Path="tests/System.Firmware.TestsApplication/System.Firmware.TestsApplication.csproj" />
+</Solution>

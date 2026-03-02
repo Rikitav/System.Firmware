@@ -1,5 +1,5 @@
 # ExtensibleFirmware
-![Markdown](https://github.com/Rikitav/Rikitav.IO.ExtensibleFirmware/blob/main/banner.png)
+![Markdown](https://github.com/Rikitav/System.Firmware/blob/main/banner.png)
 
 ## Description
 ExtensibleFirmware is a .NET class library for working with UEFI firmware. It provides tools for editing the boot process, allowing developers to modify and configure boot parameters for enhanced flexibility.
@@ -12,17 +12,17 @@ ExtensibleFirmware is a .NET class library for working with UEFI firmware. It pr
 ## Installation
 ```bash
 # Install via NuGet Package manager
-Install-Package Rikitav.IO.ExtensibleFirmware
+Install-Package System.Firmware
 
 # Install via dotnet CLI
-dotnet add package Rikitav.IO.ExtensibleFirmware 
+dotnet add package System.Firmware 
 ```
 
 ## Usage Examples
 
 ### Example 1: Getting ESP
 ```csharp
-using Rikitav.IO.ExtensibleFirmware.SystemPartition;
+using System.Firmware.SystemPartition;
 using System.IO;
 
 namespace Examples
@@ -46,9 +46,9 @@ namespace Examples
 
 ### Example 2: Reading boot option
 ```csharp
-using Rikitav.IO.ExtensibleFirmware.BootService;
-using Rikitav.IO.ExtensibleFirmware.BootService.DevicePathProtocols;
-using Rikitav.IO.ExtensibleFirmware.BootService.LoadOption;
+using System.Firmware.BootService;
+using System.Firmware.BootService.DevicePathProtocols;
+using System.Firmware.BootService.LoadOption;
 using System;
 
 namespace Examples
@@ -74,11 +74,11 @@ namespace Examples
 
 ### Example 3: Enumearating boot options
 ```csharp
-using Rikitav.IO.ExtensibleFirmware.BootService;
-using Rikitav.IO.ExtensibleFirmware.BootService.DevicePathProtocols;
-using Rikitav.IO.ExtensibleFirmware.BootService.LoadOption;
+using System.Firmware.BootService;
+using System.Firmware.BootService.DevicePathProtocols;
+using System.Firmware.BootService.LoadOption;
 
-namespace Rikitav.IO.ExtensibleFirmware.TestsApplication
+namespace System.Firmware.TestsApplication
 {
     public static class BootManagerTests
     {
@@ -104,10 +104,10 @@ namespace Rikitav.IO.ExtensibleFirmware.TestsApplication
 
 ### Example 4: Creating boot option
 ```csharp
-using Rikitav.IO.ExtensibleFirmware.BootService;
-using Rikitav.IO.ExtensibleFirmware.BootService.DevicePathProtocols;
-using Rikitav.IO.ExtensibleFirmware.BootService.LoadOption;
-using Rikitav.IO.ExtensibleFirmware.MediaDevicePathProtocols;
+using System.Firmware.BootService;
+using System.Firmware.BootService.DevicePathProtocols;
+using System.Firmware.BootService.LoadOption;
+using System.Firmware.MediaDevicePathProtocols;
 using System;
 
 namespace Examples

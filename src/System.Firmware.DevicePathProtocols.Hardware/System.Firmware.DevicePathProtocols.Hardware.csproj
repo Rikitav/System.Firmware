@@ -1,0 +1,50 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	<TargetFramework>netstandard2.1</TargetFramework>
+	<Nullable>enable</Nullable>
+	<LangVersion>latest</LangVersion>
+	<BaseOutputPath>..\..\bin</BaseOutputPath>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+  	<Version>1.3.2</Version>
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
+	<AssemblyVersion>$(Version)</AssemblyVersion>
+	<FileVersion>$(Version)</FileVersion>
+  	<PackageTags>uefi;efi;firmware;boot;booting;system;bios</PackageTags>
+	<RepositoryUrl>https://github.com/Rikitav/System.Firmware</RepositoryUrl>
+	<PackageIcon>icon.png</PackageIcon>
+	<AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
+	<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	<DocumentationFile>..\..\docs\$(AssemblyName).xml</DocumentationFile>
+	<Authors>Rikitav Tim4ik</Authors>
+	<Company>Rikitav Tim4ik</Company>
+	<PackageReadmeFile>README.MD</PackageReadmeFile>
+  	<Title>$(AssemblyName)</Title>
+  	<Description>C# Library providing convenient abstractions and tools for working with UEFI firmware (United Extensible Firmware Interface) </Description>
+  	<PackageProjectUrl>https://www.nuget.org/packages/System.Firmware.MediaDevicePathProtocols/</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\form\icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+    <None Include="..\..\README.MD">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\System.Firmware.BootService\System.Firmware.BootService.csproj" />
+    <ProjectReference Include="..\System.Firmware\System.Firmware.csproj" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\System.Firmware.BootService.Generators\System.Firmware.BootService.Generators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+</Project>
