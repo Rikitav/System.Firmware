@@ -1,5 +1,5 @@
 # ExtensibleFirmware
-![Markdown](https://github.com/Rikitav/System.Firmware/blob/main/banner.png)
+![Markdown](https://github.com/Rikitav/System.Firmware/blob/main/form/banner.png)
 
 ## Description
 ExtensibleFirmware is a .NET class library for working with UEFI firmware. It provides tools for editing the boot process, allowing developers to modify and configure boot parameters for enhanced flexibility.

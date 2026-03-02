@@ -20,14 +20,30 @@ using System.Text;
 
 namespace System.Firmware.Win32Native;
 
+/// <summary>
+/// Provides extension methods for marshalling data.
+/// </summary>
 public static partial class MarshalExtensions
 {
+    /// <summary>
+    /// Converts a pointer to pinned memory into a managed array of type T.
+    /// </summary>
+    /// <typeparam name="T">The type of the struct.</typeparam>
+    /// <param name="memory">The pointer to the memory.</param>
+    /// <param name="length">The number of elements to read.</param>
+    /// <returns>An array containing the data from the memory.</returns>
     public static unsafe T[] PinnedMemoryToArray<T>(this IntPtr memory, int length) where T : struct
     {
         ReadOnlySpan<T> span = new ReadOnlySpan<T>(memory.ToPointer(), length);
         return span.ToArray();
     }
 
+    /// <summary>
+    /// Writes a C-style null-terminated wide string to the binary writer.
+    /// </summary>
+    /// <param name="writer">The binary writer.</param>
+    /// <param name="value">The string to write.</param>
+    /// <returns>The binary writer.</returns>
     public static BinaryWriter WriteCstyleWideString(this BinaryWriter writer, string value)
     {
         if (value == null)
@@ -42,6 +58,11 @@ public static partial class MarshalExtensions
         return writer;
     }
 
+    /// <summary>
+    /// Reads a C-style null-terminated wide string from the binary reader.
+    /// </summary>
+    /// <param name="reader">The binary reader.</param>
+    /// <returns>The read string.</returns>
     public static string ReadCstyleWideString(this BinaryReader reader)
     {
         StringBuilder builder = new StringBuilder();
@@ -51,6 +72,11 @@ public static partial class MarshalExtensions
         return builder.ToString();
     }
 
+    /// <summary>
+    /// Calculates the byte length of a C-style wide string, including the null terminator.
+    /// </summary>
+    /// <param name="value">The string value.</param>
+    /// <returns>The length in bytes.</returns>
     public static ushort GetCstyleWideStringLength(this string value)
     {
         if (value == null)
@@ -59,18 +85,34 @@ public static partial class MarshalExtensions
         return (ushort)((value.Length + 1) * sizeof(ushort));
     }
 
+    /// <summary>
+    /// Reads all remaining bytes from the current stream position.
+    /// </summary>
+    /// <param name="reader">The binary reader.</param>
+    /// <returns>The remaining bytes.</returns>
     public static byte[] ReadRemainingBytes(this BinaryReader reader)
     {
         int remainingBytesLength = (int)(reader.BaseStream.Length - reader.BaseStream.Position);
         return reader.ReadBytes(remainingBytesLength);
     }
 
+    /// <summary>
+    /// Writes a GUID to the binary writer.
+    /// </summary>
+    /// <param name="writer">The binary writer.</param>
+    /// <param name="guid">The GUID to write.</param>
+    /// <returns>The binary writer.</returns>
     public static BinaryWriter WriteGuid(this BinaryWriter writer, Guid guid)
     {
         writer.Write(guid.ToByteArray());
         return writer;
     }
 
+    /// <summary>
+    /// Reads a GUID from the binary reader.
+    /// </summary>
+    /// <param name="reader">The binary reader.</param>
+    /// <returns>The read GUID.</returns>
     public static Guid ReadGuid(this BinaryReader reader)
     {
         byte[] guidBytes = reader.ReadBytes(16);
