@@ -21,7 +21,7 @@
     <PackageReadmeFile>README.MD</PackageReadmeFile>
     <Title>$(AssemblyName)</Title>
     <Description>C# Library providing convenient abstractions and tools for working with UEFI firmware (United Extensible Firmware Interface) </Description>
-	<PackageProjectUrl>https://www.nuget.org/packages/System.Firmware/</PackageProjectUrl>
+	<PackageProjectUrl>https://www.nuget.org/packages/System.Firmware</PackageProjectUrl>
 	<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
